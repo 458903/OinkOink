@@ -981,3 +981,11 @@
     </div>
 </template>
 
+<script>
+    import $ from 'jquery'
+    export default {
+    mounted() {
+        $('body').removeClass('login-layout light-login')
+        $('body').attr('class', 'no-skin');
+    }}
+</script>
