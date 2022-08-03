@@ -14,7 +14,12 @@ const routes=[{
 },{
     path: '/admin',
     name: 'myAdmin',
-    component:()=>import('@/views/myAdmin')
+    component:()=>import('@/views/myAdmin'),
+    children:[{
+        path:'welcome',
+        name:'myWelcome',
+        component:()=>import('@/views/admin/myWelcome')
+    }]
 }]
 
 
