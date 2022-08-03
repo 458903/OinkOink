@@ -48,7 +48,8 @@
                                                         <span class="lbl">记住</span>
                                                     </label>
 
-                                                    <button type="button" class="width-35 pull-right btn btn-sm btn-primary">
+                                                    <button type="button" class="width-35 pull-right btn btn-sm btn-primary"
+                                                    v-on:click="login()">
                                                         <i class="ace-icon fa fa-key"></i>
                                                         <span class="bigger-110">登录</span>
                                                     </button>
@@ -239,8 +240,12 @@
 <script >
     import $ from 'jquery'
     $('body').attr('class', 'login-layout light-login');
-
     export default {
         name: 'myLogin',
+        methods:{
+            login(){
+                this.$router.push("/admin")
+            }
+        }
     }
 </script>
