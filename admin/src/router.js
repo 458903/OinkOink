@@ -19,6 +19,10 @@ const routes=[{
         path:'welcome',
         name:'myWelcome',
         component:()=>import('@/views/admin/myWelcome')
+    },{
+        path: 'chapter',
+        name: 'myChapter',
+        component:()=>import('@/views/admin/myChapter')
     }]
 }]
 
