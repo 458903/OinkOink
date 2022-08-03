@@ -239,6 +239,7 @@
 <script >
     import $ from 'jquery'
     $('body').attr('class', 'login-layout light-login');
+
     export default {
         name: 'myLogin',
     }

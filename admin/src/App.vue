@@ -1,12 +1,12 @@
 <template>
-<div>
-  <component  v-bind:is="app">
-    <router-view v-slot="{ Component }">
-      <transition name="aside-right" appear>
-        <component :is="Component" />
-      </transition>
-    </router-view>
-
-  </component>
+<div id="App">
+  <router-view/>
 </div>
+
 </template>
+<!--这是最顶级的父页面-->
+<script>
+  export default {
+    name:'App',
+  }
+</script>

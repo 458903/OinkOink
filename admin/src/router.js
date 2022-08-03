@@ -1,18 +1,27 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import myLogin from './views/login.vue'
+import { createRouter, createWebHistory} from 'vue-router'
+//import myLogin from './views/login.vue'
+//import myAdmin from './views/myAdmin'
+//const myLogin=import('./views/login.vue')
 
-const routers = createRouter({
-    history: createWebHistory(),
-    routes: [
-        {
-            path:'*',
-            redirect:"/login",
-        },
-        {
-            path: '/login',
-            component: myLogin,
-        },
-    ]
-});
 
-export default routers;
+const routes=[{
+   path:'/',
+   redirect:"/login",
+},{
+    path: '/login',
+    name:'myLogin',
+     component:()=>import('@/views/login')
+},{
+    path: '/admin',
+    name: 'myAdmin',
+    component:()=>import('@/views/myAdmin')
+}]
+
+
+const router = createRouter({
+ base:process.env.BASE_URL,
+  history: createWebHistory(),
+   routes//定义的路由
+})
+//导出router
+export default router

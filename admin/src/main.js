@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App'
 import 'jquery'
-import routers from './router'
-
-createApp(App).use(routers).mount('#app')
+import router from './router.js'
+import VueAppend from 'vue-append'
+createApp(App).use(router).use(VueAppend)
+    .mount('#app')
