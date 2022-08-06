@@ -9,8 +9,8 @@
 <script>
     export default {
         component: 'myWelcome',
-        /*  data(){
-            return
-          }*/
+        mounted() {
+            this.$parent.activeSidebar("welcome-sidebar");
+        },
     }
 </script>

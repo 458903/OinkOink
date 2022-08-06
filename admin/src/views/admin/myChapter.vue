@@ -1,6 +1,5 @@
 <template>
-
-            <table id="simple-table" class="table  table-bordered table-hover">
+    <table id="simple-table" class="table  table-bordered table-hover">
                 <thead>
                 <tr>
                     <th class="center">
@@ -971,14 +970,13 @@
                 </tr>
                 </tbody>
             </table>
-
 </template>
 
 <script>
     export default {
         component: 'myChapter',
-        /*  data(){
-            return
-          }*/
+        mounted() {
+            this.$parent.activeSidebar("business-chapter-sidebar");
+        },
     }
 </script>

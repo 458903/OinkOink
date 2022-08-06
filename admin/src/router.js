@@ -20,7 +20,7 @@ const routes=[{
         name:'myWelcome',
         component:()=>import('@/views/admin/myWelcome')
     },{
-        path: 'chapter',
+        path: 'business/chapter',
         name: 'myChapter',
         component:()=>import('@/views/admin/myChapter')
     }]
