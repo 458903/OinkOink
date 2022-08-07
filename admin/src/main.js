@@ -3,5 +3,8 @@ import App from './App'
 import 'jquery'
 import router from './router.js'
 import VueAppend from 'vue-append'
-createApp(App).use(router).use(VueAppend)
+import axios from "axios";
+const app=createApp(App)
+app.config.globalProperties.$axios=axios
+app.use(router).use(VueAppend)
     .mount('#app')

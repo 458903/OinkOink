@@ -113,7 +113,7 @@
                             <div class="row">
                                 <div class="col-xs-12 col-sm-2">
                                     <div class="text-center">
-                                        <img height="150" class="thumbnail inline no-margin-bottom" alt="Domain Owner's Avatar" src="assets/images/avatars/profile-pic.jpg" />
+                                        <img height="150" class="thumbnail inline no-margin-bottom" alt="Domain Owner's Avatar" src="/assets/images/avatars/profile-pic.jpg" />
                                         <br />
                                         <div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
                                             <div class="inline position-relative">
@@ -973,10 +973,13 @@
 </template>
 
 <script>
+    //import {getCurrentInstance} from 'vue'
     export default {
         component: 'myChapter',
-        mounted() {
-            this.$parent.activeSidebar("business-chapter-sidebar");
+        mounted:function() {
+            //let _this=this;
+            //_this.list();
+            //this.$parent.activeSidebar("business-chapter-sidebar");
         },
     }
 </script>

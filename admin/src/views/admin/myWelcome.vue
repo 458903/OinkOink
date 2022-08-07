@@ -9,8 +9,12 @@
 <script>
     export default {
         component: 'myWelcome',
-        mounted() {
-            this.$parent.activeSidebar("welcome-sidebar");
+        mounted:function () {
+           // let _this=this;
+          //  _this.activeSidebar("welcome-sidebar");
         },
+        methods:{
+
+        }
     }
 </script>

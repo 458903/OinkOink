@@ -17,11 +17,11 @@ const routes=[{
     component:()=>import('@/views/myAdmin'),
     children:[{
         path:'welcome',
-        name:'myWelcome',
+        name:'welcome',
         component:()=>import('@/views/admin/myWelcome')
     },{
         path: 'business/chapter',
-        name: 'myChapter',
+        name: 'business/chapter',
         component:()=>import('@/views/admin/myChapter')
     }]
 }]

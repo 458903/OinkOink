@@ -564,21 +564,42 @@
 <script>
     import $ from 'jquery'
     export default {
-    mounted() {
+    mounted:function() {
+       let _this=this;
         $('body').removeClass('login-layout light-login')
         $('body').attr('class', 'no-skin');
-    },//菜单激活样式，id是当前点击的菜单的id
-        activeSidebar:function (id) {
-        //二级菜单去掉active样式，自身增加active样式
-            $("#"+id).siblings().removeClass("active");
-            $("#"+id).siblings().find("li").removeClass("active");
-            $("#"+id).addClass("active");
-            //如果有父菜单，父菜单的兄弟菜单去掉open active,父菜单增加open active
-            let parentLi=   $("#"+id).parents("li");
-            if (parentLi){
-                parentLi.siblings().removeClass("open active");
-                parentLi.addClass("open active");
+        _this.activeSidebar(_this.$route.name.replace("/","-")+"-sidebar");
+    },
+        watch:{
+        $route:{
+            handler:function (val,oldVal){
+                console.log("----->页面跳转：",val,oldVal);
+                let _this=this;
+                _this.$nextTick(function () {
+                _this.activeSidebar(_this.$route.name.replace("/","-")+"-sidebar");
+                })
+             }
+        }
+        }
+    ,methods:{
+        login() {
+         this.$router.push("/admin")
+        },
+       activeSidebar:function(id) {
+                //二级菜单去掉active样式，自身增加active样式
+                $("#"+id).siblings().removeClass("active");
+                $("#"+id).siblings().find("li").removeClass("active");
+                $("#"+id).addClass("active");
+                //如果有父菜单，父菜单的兄弟菜单去掉open active,父菜单增加open active
+                let parentLi=   $("#"+id).parents("li");
+                if (parentLi){
+                    parentLi.siblings().removeClass("open active");
+                    parentLi.addClass("open active");
+                }
             }
-        } ,
+        },
+
+        //菜单激活样式，id是当前点击的菜单的id
+
     }
 </script>
