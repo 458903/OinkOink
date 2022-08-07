@@ -12,7 +12,7 @@ public class CosConfig implements WebMvcConfigurer {
      @Override
     public void addCorsMappings(CorsRegistry registry){
          registry.addMapping("/**")
-                 .allowedOrigins("*")
+                 .allowedOriginPatterns("*")
                  .allowedHeaders(CorsConfiguration.ALL)
                  .allowedMethods(CorsConfiguration.ALL)
                  .allowCredentials(true)

@@ -5,6 +5,6 @@ import router from './router.js'
 import VueAppend from 'vue-append'
 import axios from "axios";
 const app=createApp(App)
-app.config.globalProperties.$axios=axios
+app.config.globalProperties.$ajax=axios
 app.use(router).use(VueAppend)
     .mount('#app')
