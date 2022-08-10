@@ -1,4 +1,5 @@
 <template>
+    <div>
     <table id="simple-table" class="table  table-bordered table-hover">
         <thead>
                 <tr>
@@ -71,6 +72,13 @@
 
           </tbody>
     </table>
+    <p>
+        <button v-on:click="list()" class="btn btn-pink">
+            <i class="ace-icon fa fa-refresh"></i>
+              刷新
+        </button>
+    </p>
+    </div>
 </template>
 
 <script>
