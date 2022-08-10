@@ -72,18 +72,23 @@
 
           </tbody>
     </table>
-    <p>
-        <button v-on:click="list()" class="btn btn-pink">
-            <i class="ace-icon fa fa-refresh"></i>
-              刷新
-        </button>
-    </p>
+
+        <myPagination ref="pagination" v-bind:list="list" ></myPagination>
+        <p>
+            <button v-on:click="list(1)" class="btn btn-pink">
+                <i class="ace-icon fa fa-refresh"></i>
+                刷新
+            </button>
+        </p>
     </div>
 </template>
 
 <script>
     //import {getCurrentInstance} from 'vue'
+    import myPagination from "@/components/pagination";
+  //  import myPagination from "../../components/pagination";
     export default {
+        components: {myPagination},
         component: 'myChapter',
         data:function(){
             return{
@@ -92,23 +97,29 @@
         },
         mounted:function() {
             let _this=this;
-            _this.list();
+            _this.list(1);
             //this.$parent.activeSidebar("business-chapter-sidebar");
         },
         methods:{
-            list(){
+            list(page){
                 let _this=this;
-                _this.$ajax.get('http://127.0.0.1:9000/business/admin/chapter/list?page=2&size=7')
-                .then(
-                    (response)=>{
-                        //response.headers("Access-Control-Allow-Origin","*")
-                        console.log("查询章列表结果：",response);
-                        _this.chapters=response.data.list;
-
-
-
+              //  let url ='http://127.0.0.1:9000/business/admin/chapter/list';
+              //  url +='?page=${page}&size=_this.$refs.pagination.size';
+                    _this.$ajax.get('http://127.0.0.1:9000/business/admin/chapter/list',{
+                        params: {
+                            page:page,
+                            size: _this.$refs.pagination.size
+                        }
                     }
-                )
+                   ,{emulateJSON: true}
+                    )
+                        .then((response) => {
+                                //response.headers("Access-Control-Allow-Origin","*")
+                                console.log("查询章列表结果：", response);
+                                _this.chapters = response.data.list;
+                                _this.$refs.pagination.render(page,response.data.total)
+                            }
+                        );
             }
         }
     }
