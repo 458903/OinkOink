@@ -98,11 +98,15 @@
         methods:{
             list(){
                 let _this=this;
-                _this.$ajax.get('http://127.0.0.1:9000/business/admin/chapter/list')
+                _this.$ajax.get('http://127.0.0.1:9000/business/admin/chapter/list?page=2&size=7')
                 .then(
                     (response)=>{
+                        //response.headers("Access-Control-Allow-Origin","*")
                         console.log("查询章列表结果：",response);
-                        _this.chapters=response.data;
+                        _this.chapters=response.data.list;
+
+
+
                     }
                 )
             }
