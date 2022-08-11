@@ -91,6 +91,7 @@
   //import $ from  'bootstrap/dist/js/bootstrap.js'
   import myPagination from "@/components/pagination";
   import Swal from 'sweetalert2';
+
     export default {
         components: {myPagination},
         component: 'myChapter',
@@ -134,7 +135,15 @@
                             name:_this.chapter.name,
                           courseId: _this.chapter.courseId
                         }},{emulateJSON: true}
-                ).then((response) => {console.log("查询章列表结果：", response);})
+                ).then((response) => {console.log("查询章列表结果：", response);
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Your work has been saved',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                })
             },
             del(id){
                 let _this=this;
@@ -150,12 +159,21 @@
                     if (result.isConfirmed) {
                         _this.$ajax.get('http://127.0.0.1:9000/business/admin/chapter/delete/'+id,{emulateJSON: true}
                         ).then((response) => {console.log("删除章列表结果：", response);
-                            Swal.fire(
+                            /*Swal.fire(
                                 '删除成功!',
                                 '您的数据已删除.',
                                 'success'
-                            )})
-
+                            );*/
+                            Swal.fire({
+                                title: '删除成功',
+                                showClass: {
+                                    popup: 'animate__animated animate__fadeInDown'
+                                },
+                                hideClass: {
+                                    popup: 'animate__animated animate__fadeOutUp'
+                                }
+                            })
+                        })
                     }
                 })
 
