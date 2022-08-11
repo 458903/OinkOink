@@ -1,6 +1,7 @@
 package com.course.business.controller.admin;
 import com.course.server.dto.ChapterDto;
 import com.course.server.dto.PageDto;
+import com.course.server.dto.ResponseDto;
 import com.course.server.service.ChapterService;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,13 +16,17 @@ public class ChapterController {
     private ChapterService chapterService;
 
     @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public PageDto list(PageDto pageDto){
+    public ResponseDto list(PageDto pageDto){
+        ResponseDto responseDto=new ResponseDto();
          chapterService.list(pageDto);
-         return pageDto;
+         responseDto.setContent(pageDto);
+         return responseDto;
     }
     @RequestMapping(value = "/save",method = RequestMethod.GET)
-    public ChapterDto save(ChapterDto chapterDto){
+    public ResponseDto save(ChapterDto chapterDto){
+        ResponseDto responseDto=new ResponseDto();
          chapterService.save(chapterDto);
-         return chapterDto;
+        responseDto.setContent(chapterDto);
+        return responseDto;
     }
 }

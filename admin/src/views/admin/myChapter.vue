@@ -128,6 +128,7 @@
         component: 'myChapter',
         data:function(){
             return{
+                content:{},
                 chapter:{},
                 chapters:[]
             }
@@ -153,8 +154,8 @@
                         .then((response) => {
                                 //response.headers("Access-Control-Allow-Origin","*")
                                 console.log("查询章列表结果：", response);
-                                _this.chapters = response.data.list;
-                                _this.$refs.pagination.render(page,response.data.total)
+                                _this.chapters = response.data.content.list;
+                                _this.$refs.pagination.render(page,response.data.content.total)
                             }
                         );
             }  ,
@@ -171,11 +172,9 @@
                     ,{emulateJSON: true}
                 )
                     .then((response) => {
+                            console.log("查询章列表结果：", response);}
 
-                            console.log("查询章列表结果：", response);
-
-                        }
-                    );
+                    )
             }
 
         }
