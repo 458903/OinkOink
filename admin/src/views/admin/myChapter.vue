@@ -98,24 +98,24 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">名称</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control"  placeholder="名称">
+                                    <input v-model="chapter.name" class="form-control"  placeholder="名称">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">课程ID</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control"  placeholder="课程ID">
+                                    <input v-model="chapter.courseId" class="form-control"  placeholder="课程ID">
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                        <button type="button" class="btn btn-primary">保存</button>
+                        <button v-on:click="save()" type="button" class="btn btn-primary">保存</button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
+        </div>
     </div>
 </template>
 
@@ -128,6 +128,7 @@
         component: 'myChapter',
         data:function(){
             return{
+                chapter:{},
                 chapters:[]
             }
         },
@@ -156,7 +157,27 @@
                                 _this.$refs.pagination.render(page,response.data.total)
                             }
                         );
+            }  ,
+            save(){
+                let _this=this;
+                //  let url ='http://127.0.0.1:9000/business/admin/chapter/list';
+                //  url +='?page=${page}&size=_this.$refs.pagination.size';
+                _this.$ajax.get('http://127.0.0.1:9000/business/admin/chapter/save',{
+                        params: {
+                            name:_this.chapter.name,
+                          courseId: _this.chapter.courseId
+                        }
+                    }
+                    ,{emulateJSON: true}
+                )
+                    .then((response) => {
+
+                            console.log("查询章列表结果：", response);
+
+                        }
+                    );
             }
+
         }
     }
 </script>
