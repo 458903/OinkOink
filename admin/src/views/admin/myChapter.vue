@@ -90,7 +90,7 @@
 
   //import $ from  'bootstrap/dist/js/bootstrap.js'
   import myPagination from "@/components/pagination";
-
+  import Swal from 'sweetalert2';
     export default {
         components: {myPagination},
         component: 'myChapter',
@@ -138,8 +138,30 @@
             },
             del(id){
                 let _this=this;
-                _this.$ajax.get('http://127.0.0.1:9000/business/admin/chapter/delete/'+id,{emulateJSON: true}
-                ).then((response) => {console.log("删除章列表结果：", response);})}
+                Swal.fire({
+                    title: '确定要删除吗?',
+                    text: "注意，删除后不可恢复!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#FFB6C1',
+                    cancelButtonColor: '#BA55D3',
+                    confirmButtonText: '确认!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        _this.$ajax.get('http://127.0.0.1:9000/business/admin/chapter/delete/'+id,{emulateJSON: true}
+                        ).then((response) => {console.log("删除章列表结果：", response);
+                            Swal.fire(
+                                '删除成功!',
+                                '您的数据已删除.',
+                                'success'
+                            )})
+
+                    }
+                })
+
+
+
+            }
                }
             }
 </script>
