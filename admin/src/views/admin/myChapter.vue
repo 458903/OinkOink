@@ -17,59 +17,16 @@
             <td>{{chapter.courseId}}</td>
             <td>
                 <div class="hidden-sm hidden-xs btn-group">
-                    <button class="btn btn-xs btn-success">
-                        <i class="ace-icon fa fa-check bigger-120"></i>
-                    </button>
-
-                    <button class="btn btn-xs btn-info">
+                    <button class="btn btn-xs btn-purple" data-toggle="modal" data-target="#myModel">
                         <i class="ace-icon fa fa-pencil bigger-120"></i>
                     </button>
-
-                    <button class="btn btn-xs btn-danger">
+                    <button class="btn btn-xs btn-pink">
                         <i class="ace-icon fa fa-trash-o bigger-120"></i>
                     </button>
 
-                    <button class="btn btn-xs btn-warning">
-                        <i class="ace-icon fa fa-flag bigger-120"></i>
-                    </button>
-                </div>
-
-                <div class="hidden-md hidden-lg">
-                    <div class="inline pos-rel">
-                        <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown" data-position="auto">
-                            <i class="ace-icon fa fa-cog icon-only bigger-110"></i>
-                        </button>
-
-                        <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-                            <li>
-                                <a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-																			<span class="blue">
-																				<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																			</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-																			<span class="green">
-																				<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																			</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-																			<span class="red">
-																				<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																			</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             </td>
         </tr>
-
           </tbody>
     </table>
 
@@ -120,9 +77,10 @@
 </template>
 
 <script>
-    //import {getCurrentInstance} from 'vue'
-    import myPagination from "@/components/pagination";
-  //  import myPagination from "../../components/pagination";
+
+  //import $ from  'bootstrap/dist/js/bootstrap.js'
+  import myPagination from "@/components/pagination";
+
     export default {
         components: {myPagination},
         component: 'myChapter',
@@ -175,8 +133,12 @@
                             console.log("查询章列表结果：", response);}
 
                     )
+            },
+             //  edit(){$(function () {
+              //     $('#myModal').modal('hide')
+             //  })}
+
+               }
             }
 
-        }
-    }
 </script>
