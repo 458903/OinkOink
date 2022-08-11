@@ -29,4 +29,10 @@ public class ChapterController {
         responseDto.setContent(chapterDto);
         return responseDto;
     }
+    @RequestMapping(value = "/delete/{id}",method = RequestMethod.GET)
+    public ResponseDto delete(@PathVariable("id") String id){
+        ResponseDto responseDto=new ResponseDto();
+        chapterService.delete(id);
+        return responseDto;
+    }
 }

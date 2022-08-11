@@ -20,7 +20,7 @@
                     <button class="btn btn-xs btn-purple" data-toggle="modal" data-target="#myModel">
                         <i class="ace-icon fa fa-pencil bigger-120"></i>
                     </button>
-                    <button class="btn btn-xs btn-pink">
+                    <button v-on:click="del(chapter.id)" class="btn btn-xs btn-pink">
                         <i class="ace-icon fa fa-trash-o bigger-120"></i>
                     </button>
 
@@ -48,18 +48,24 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">新增课程</h4>
+                        <h4 class="modal-title">
+                            <i class="ace-icon fa fa-spinner fa-spin orange bigger-125"></i>
+                            新增课程</h4>
                     </div>
                     <div class="modal-body">
                         <form class="form-horizontal">
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">名称</label>
+                                <label class="col-sm-2 control-label">
+                                    <i class="ace-icon fa fa-calendar smaller-90"></i>
+                                    名称</label>
                                 <div class="col-sm-10">
                                     <input v-model="chapter.name" class="form-control"  placeholder="名称">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">课程ID</label>
+                                <label class="col-sm-2 control-label">
+                                    <i class="ace-icon fa fa-calendar-o smaller-90"></i>
+                                    课程ID</label>
                                 <div class="col-sm-10">
                                     <input v-model="chapter.courseId" class="form-control"  placeholder="课程ID">
                                 </div>
@@ -67,8 +73,12 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                        <button v-on:click="save()" type="button" class="btn btn-primary">保存</button>
+                        <button type="button" class="btn btn-purple" data-dismiss="modal">
+                            <i class="ace-icon fa fa-unlock"></i>
+                            关闭</button>
+                        <button v-on:click="save()" type="button" class="btn btn-pink">
+                            <i class="ace-icon fa fa-leaf"></i>
+                            保存</button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
@@ -119,26 +129,17 @@
             }  ,
             save(){
                 let _this=this;
-                //  let url ='http://127.0.0.1:9000/business/admin/chapter/list';
-                //  url +='?page=${page}&size=_this.$refs.pagination.size';
                 _this.$ajax.get('http://127.0.0.1:9000/business/admin/chapter/save',{
                         params: {
                             name:_this.chapter.name,
                           courseId: _this.chapter.courseId
-                        }
-                    }
-                    ,{emulateJSON: true}
-                )
-                    .then((response) => {
-                            console.log("查询章列表结果：", response);}
-
-                    )
+                        }},{emulateJSON: true}
+                ).then((response) => {console.log("查询章列表结果：", response);})
             },
-             //  edit(){$(function () {
-              //     $('#myModal').modal('hide')
-             //  })}
-
+            del(id){
+                let _this=this;
+                _this.$ajax.get('http://127.0.0.1:9000/business/admin/chapter/delete/'+id,{emulateJSON: true}
+                ).then((response) => {console.log("删除章列表结果：", response);})}
                }
             }
-
 </script>
