@@ -78,8 +78,44 @@
             <button v-on:click="list(1)" class="btn btn-pink">
                 <i class="ace-icon fa fa-refresh"></i>
                 刷新
-            </button>
+            </button>&nbsp;
+            <!-- 按钮触发模态框 -->
+            <button class="btn btn-purple" data-toggle="modal" data-target="#myModel">
+                <i class="ace-icon fa fa-user"></i>
+                新增</button>
+
         </p>
+        <!-- 模态框（Modal1） -->
+        <div class="modal fade" id="myModel" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">新增课程</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">名称</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control"  placeholder="名称">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">课程ID</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control"  placeholder="课程ID">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary">保存</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
     </div>
 </template>
 
