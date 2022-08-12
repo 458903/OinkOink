@@ -87,11 +87,11 @@
 </template>
 
 <script>
-
-  //import $ from  'bootstrap/dist/js/bootstrap.js'
+    //
   import myPagination from "@/components/pagination";
   import Swal from 'sweetalert2';
-
+ import {quire, length} from '../../../public/static/js/validator'
+ //import {hide} from '../../../public/static/js/loading'
     export default {
         components: {myPagination},
         component: 'myChapter',
@@ -109,9 +109,8 @@
         },
         methods:{
             list(page){
+            //  show();
                 let _this=this;
-              //  let url ='http://127.0.0.1:9000/business/admin/chapter/list';
-              //  url +='?page=${page}&size=_this.$refs.pagination.size';
                     _this.$ajax.get('http://127.0.0.1:9000/business/admin/chapter/list',{
                         params: {
                             page:page,
@@ -121,7 +120,7 @@
                    ,{emulateJSON: true}
                     )
                         .then((response) => {
-                                //response.headers("Access-Control-Allow-Origin","*")
+                        // hide();
                                 console.log("查询章列表结果：", response);
                                 _this.chapters = response.data.content.list;
                                 _this.$refs.pagination.render(page,response.data.content.total)
@@ -130,6 +129,10 @@
             }  ,
             save(){
                 let _this=this;
+                if (!quire(_this.chapter.name,"名称")
+                    || !quire(_this.chapter.courseId,"课程ID")
+                    || !length(_this.chapter.courseId,"课程ID",1,8)){return}
+
                 _this.$ajax.get('http://127.0.0.1:9000/business/admin/chapter/save',{
                         params: {
                             name:_this.chapter.name,
