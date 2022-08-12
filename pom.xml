@@ -9,7 +9,8 @@
         <module>gateway</module>
 		<module>server</module>
         <module>business</module>
-    </modules>
+		<module>generator</module>
+	</modules>
 
     <parent>
 		<groupId>org.springframework.boot</groupId>
@@ -66,7 +67,14 @@
 				<artifactId>pagehelper-spring-boot-starter</artifactId>
 				<version>1.4.1</version>
 			</dependency>
+			<dependency>
+				<groupId>org.freemarker</groupId>
+				<artifactId>freemarker</artifactId>
+				<version>2.3.30</version>
+			</dependency>
 		</dependencies>
+
+
 	</dependencyManagement>
 
 	<build>
